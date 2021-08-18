@@ -1,23 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    container: {
-        height: 50,
-        justifyContent: 'center',
-        borderBottomWidth: 1,
-        borderBottomColor: '#eee',
-        paddingHorizontal: 15,
-    },
-    text: {
-        fontSize: 18
-    }
-})
+  container: {
+    height: 50,
+    justifyContent: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
+    paddingHorizontal: 15,
+  },
+  text: {
+    fontSize: 18,
+  },
+});
 
-export default ({ title }) => {
+export default ({ title, onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Text style={styles.text}>{title}</Text>
-    </View>
-  )
-}
+    </TouchableOpacity>
+  );
+};

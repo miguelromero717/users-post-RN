@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default () => {
+export default ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
 
@@ -27,8 +27,8 @@ export default () => {
   };
 
   useEffect(() => {
-    fetchUsers()
-  }, [])
+    fetchUsers();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -39,7 +39,14 @@ export default () => {
           style={styles.list}
           data={users}
           keyExtractor={(u) => u.id}
-          renderItem={({ item }) => <ListItem title={item.name} />}
+          renderItem={({ item }) => (
+            <ListItem
+              onPress={() => {
+                navigation.navigate("Posts", { user_id: item.id });
+              }}
+              title={item.name}
+            />
+          )}
         />
       )}
     </View>
